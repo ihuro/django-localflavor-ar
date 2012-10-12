@@ -10,8 +10,6 @@ What's in the Argentina localflavor?
 * forms.ARPostalCodeField: A form field that validates input as either a
   classic four-digit Argentinian postal code or a CPA_.
 
-.. _CPA: http://www.correoargentino.com.ar/consulta_cpa/home.php
-
 * forms.ARDNIField: A form field that validates input as a Documento Nacional
   de Identidad (DNI) number.
 
@@ -20,6 +18,8 @@ What's in the Argentina localflavor?
 
 * forms.ARProvinceSelect: A ``Select`` widget that uses a list of Argentina's
   provinces and autonomous cities as its choices.
+
+.. _CPA: http://www.correoargentino.com.ar/consulta_cpa/home.php
 
 See the source code for full details.
 

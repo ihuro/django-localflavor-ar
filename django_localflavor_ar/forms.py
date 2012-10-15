@@ -5,7 +5,7 @@ AR-specific Form helpers.
 
 from __future__ import absolute_import, unicode_literals
 
-from django.contrib.localflavor.ar.ar_provinces import PROVINCE_CHOICES
+from django_localflavor_ar.ar_provinces import PROVINCE_CHOICES
 from django.core.validators import EMPTY_VALUES
 from django.forms import ValidationError
 from django.forms.fields import RegexField, CharField, Select
@@ -20,6 +20,7 @@ class ARProvinceSelect(Select):
     def __init__(self, attrs=None):
         super(ARProvinceSelect, self).__init__(attrs, choices=PROVINCE_CHOICES)
 
+
 class ARPostalCodeField(RegexField):
     """
     A field that accepts a 'classic' NNNN Postal Code or a CPA.
@@ -31,7 +32,8 @@ class ARPostalCodeField(RegexField):
     }
 
     def __init__(self, max_length=8, min_length=4, *args, **kwargs):
-        super(ARPostalCodeField, self).__init__(r'^\d{4}$|^[A-HJ-NP-Za-hj-np-z]\d{4}\D{3}$',
+        super(ARPostalCodeField, self).__init__(
+            r'^\d{4}$|^[A-HJ-NP-Za-hj-np-z]\d{4}\D{3}$',
             max_length, min_length, *args, **kwargs)
 
     def clean(self, value):
@@ -43,6 +45,7 @@ class ARPostalCodeField(RegexField):
         if len(value) == 8:
             return '%s%s%s' % (value[0].upper(), value[1:5], value[5:].upper())
         return value
+
 
 class ARDNIField(CharField):
     """
@@ -73,13 +76,15 @@ class ARDNIField(CharField):
 
         return value
 
+
 class ARCUITField(RegexField):
     """
     This field validates a CUIT (Código Único de Identificación Tributaria). A
     CUIT is of the form XX-XXXXXXXX-V. The last digit is a check digit.
     """
     default_error_messages = {
-        'invalid': _('Enter a valid CUIT in XX-XXXXXXXX-X or XXXXXXXXXXXX format.'),
+        'invalid': _(
+            'Enter a valid CUIT in XX-XXXXXXXX-X or XXXXXXXXXXXX format.'),
         'checksum': _("Invalid CUIT."),
         'legal_type': _('Invalid legal type. Type must be 27, 20, 23 or 30.'),
     }
@@ -120,7 +125,7 @@ class ARCUITField(RegexField):
         return str(result)
 
     def _format(self, cuit, check_digit=None):
-        if check_digit == None:
+        if check_digit is None:
             check_digit = cuit[-1]
             cuit = cuit[:-1]
         return '%s-%s-%s' % (cuit[:2], cuit[2:], check_digit)

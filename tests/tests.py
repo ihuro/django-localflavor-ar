@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from django.contrib.localflavor.ar.forms import (ARProvinceSelect,
+from django_localflavor_ar.forms import (ARProvinceSelect,
     ARPostalCodeField, ARDNIField, ARCUITField)
 
 from django.test import SimpleTestCase

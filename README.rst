@@ -7,6 +7,9 @@ Country-specific Django helpers for Argentina.
 What's in the Argentina localflavor?
 ====================================
 
+Forms
+-----
+
 * forms.ARPostalCodeField: A form field that validates input as either a
   classic four-digit Argentinian postal code or a CPA_.
 
@@ -18,6 +21,19 @@ What's in the Argentina localflavor?
 
 * forms.ARProvinceSelect: A ``Select`` widget that uses a list of Argentina's
   provinces and autonomous cities as its choices.
+
+Models
+------
+
+* models.ARPostalCodeField: A model field that use forms.ARPostalCodeField as
+  input widget.
+
+* models.ARDNIField:  A model field that use forms.ARDNIField as input widget.
+
+* models.ARCUITField:  A model field that use forms.ARCUITField as input widget.
+
+* models.ARProvinceField:  A model field that use forms.ARProvinceField as
+  input widget.
 
 .. _CPA: http://www.correoargentino.com.ar/consulta_cpa/home.php
 
